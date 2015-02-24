@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	playIntro();
 	$('.ryu').mouseenter (function() {
 		$('.ryu-still').hide();
 		$('.ryu-ready').show();
@@ -28,8 +29,8 @@ $(document).ready(function() {
 	});
 
 	$(document).keydown(function(e) {
-		if (e.keyCode == 88){
-			$('.ryu-action').hide();
+		if (e.which == 88){
+			$('.ryu-ready').hide();
 			$('.ryu-still').hide();
 			$('.ryu-throwing').hide();
 			$('.ryu-cool').show(); 
@@ -37,7 +38,7 @@ $(document).ready(function() {
 	});
 
 	$(document).keyup(function(e) {
-			if (e.keyCode == 88) {
+			if (e.which == 88) {
 				$(".ryu-cool").hide();
         		$(".ryu-still").show();
 			}
@@ -53,3 +54,18 @@ function playHadouken() {
 	$('#hadouken-sound')[0].play();
 }
 
+function playIntro() {
+	$('.streetfighter-logo').fadeIn(2500, function(){
+		$(this).fadeOut(1000, function() {
+			$('.brought-to').fadeIn(2500, function() {
+				$(this).fadeOut(1000, function() {
+					$('.jquery-logo').fadeIn(2500, function() {
+						$(this).fadeOut(1000, function() {
+							$('.instructions').fadeIn(1000);
+						});
+					});
+				});
+			});
+		});
+	});
+}
